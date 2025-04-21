@@ -1,0 +1,4 @@
+file_elevation_matrix: files/alt.csv
+matrix_size:
+  width: 50
+  height: 50
