@@ -2,6 +2,9 @@ import argparse
 import yaml
 import numpy as np
 
+from utils.visibility import get_visible_area
+
+
 def load_config(path):
     with open(path, 'r') as f:
         return yaml.safe_load(f)
@@ -20,8 +23,8 @@ def main():
     config = load_config(args.config)
     matrix_file_path = config["file_elevation_matrix"]
     elevation_matrix = load_elevation_matrix(matrix_file_path)
-    print(args)
-    print(elevation_matrix)
+    visible_points = get_visible_area(elevation_matrix, args.x, args.y, args.H, args.r)
+    print(visible_points)
 
 if __name__ == "__main__":
     main()
