@@ -3,7 +3,7 @@ from fastapi import APIRouter, Query
 
 from backend.utils.data_transform import transform_visible_area_as_polygon_geojson
 from backend.utils.visibility import get_visible_area
-from backend.app import config
+from ..app import config
 
 matrix_file_path = config["file_elevation_matrix"]
 elevation_matrix = np.loadtxt(matrix_file_path, delimiter=',')

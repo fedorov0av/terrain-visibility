@@ -27,7 +27,7 @@ Exapmple usage:
     parser.add_argument("-y", type=int, required=True, help="Y coordinate of the observer")
     parser.add_argument("-H", type=float, required=True, help="Height of the observer")
     parser.add_argument("-r", type=float, required=True, help="Radius of the observer's visibility")
-    parser.add_argument("--config", type=str, default="config.yaml")
+    parser.add_argument("--config", type=str, default="backend/config.yaml")
     args = parser.parse_args()
     config: dict = load_config(args.config)
     matrix_file_path = config["file_elevation_matrix"]
