@@ -3,8 +3,8 @@ import argparse
 import yaml
 import numpy as np
 
-from utils.visibility import get_visible_area
-from utils.data_transform import save_visible_area_as_polygon_geojson
+from backend.utils.visibility import get_visible_area
+from backend.utils.data_transform import transform_visible_area_as_polygon_geojson
 
 
 def load_config(path):
@@ -37,7 +37,7 @@ Exapmple usage:
     elevation_matrix = load_elevation_matrix(matrix_file_path)
     visible_points = get_visible_area(elevation_matrix, args.x, args.y, args.H, args.r)
     print('visible_points: ', visible_points)
-    save_visible_area_as_polygon_geojson(visible_points, (args.x, args.y), args.r, args.H, output_file_path)
+    transform_visible_area_as_polygon_geojson(visible_points, (args.x, args.y), args.r, args.H, output_file_path)
 
 if __name__ == "__main__":
     main()
