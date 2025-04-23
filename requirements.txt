@@ -1,2 +1,4 @@
+geojson==3.2.0
 numpy==2.2.5
 PyYAML==6.0.2
+shapely==2.1.0

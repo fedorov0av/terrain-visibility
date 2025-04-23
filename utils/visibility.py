@@ -1,6 +1,8 @@
+import numpy as np
 from math import sqrt
 
-def is_visible(altitude_map, station, target, station_height):
+
+def is_visible(altitude_map, station, target, station_height) -> bool:
     x0, y0 = station
     x1, y1 = target
     dx = x1 - x0
@@ -20,7 +22,7 @@ def is_visible(altitude_map, station, target, station_height):
             return False
     return True
 
-def get_visible_area(altitude_map, x, y, h, r):
+def get_visible_area(altitude_map: np.ndarray[np.float64], x, y, h, r) -> list[tuple[int, int]]:
     r = int(r)
     visible_points = []
     for dx in range(-r, r + 1):
