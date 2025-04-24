@@ -1,0 +1,5 @@
+file_elevation_matrix: backend/files/input/alt.csv
+file_output: backend/files/output/poligon.json
+matrix_size:
+  width: 50
+  height: 50

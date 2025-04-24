@@ -3,10 +3,9 @@ from fastapi import APIRouter, Query
 
 from backend.utils.data_transform import transform_visible_area_as_polygon_geojson
 from backend.utils.visibility import get_visible_area
-from ..app import config
+from ..setup.config import MATRIX_FILE_PATH
 
-matrix_file_path = config["file_elevation_matrix"]
-elevation_matrix = np.loadtxt(matrix_file_path, delimiter=',')
+elevation_matrix = np.loadtxt(MATRIX_FILE_PATH, delimiter=',')
 
 router = APIRouter(prefix="/api", tags=["visibility"])
 

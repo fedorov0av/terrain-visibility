@@ -1,5 +1,0 @@
-file_elevation_matrix: files/input/alt.csv
-file_output: files/output/poligon.json
-matrix_size:
-  width: 50
-  height: 50

@@ -5,11 +5,7 @@ import numpy as np
 
 from backend.utils.visibility import get_visible_area
 from backend.utils.data_transform import transform_visible_area_as_polygon_geojson
-
-
-def load_config(path):
-    with open(path, 'r') as f:
-        return yaml.safe_load(f)
+from backend.setup.config import MATRIX_FILE_PATH, OUTPUT_FILE_PATH
 
 def load_elevation_matrix(file_path):
     return np.loadtxt(file_path, delimiter=',')
@@ -27,17 +23,11 @@ Exapmple usage:
     parser.add_argument("-y", type=int, required=True, help="Y coordinate of the observer")
     parser.add_argument("-H", type=float, required=True, help="Height of the observer")
     parser.add_argument("-r", type=float, required=True, help="Radius of the observer's visibility")
-    parser.add_argument("--config", type=str, default="backend/config.yaml")
     args = parser.parse_args()
-    config: dict = load_config(args.config)
-    matrix_file_path = config["file_elevation_matrix"]
-    output_file_path = config["file_output"]
-    os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
-
-    elevation_matrix = load_elevation_matrix(matrix_file_path)
+    os.makedirs(os.path.dirname(OUTPUT_FILE_PATH), exist_ok=True)
+    elevation_matrix = load_elevation_matrix(MATRIX_FILE_PATH)
     visible_points = get_visible_area(elevation_matrix, args.x, args.y, args.H, args.r)
-    print('visible_points: ', visible_points)
-    transform_visible_area_as_polygon_geojson(visible_points, (args.x, args.y), args.r, args.H, output_file_path)
+    transform_visible_area_as_polygon_geojson(visible_points, (args.x, args.y), args.r, args.H, OUTPUT_FILE_PATH)
 
 if __name__ == "__main__":
     main()
