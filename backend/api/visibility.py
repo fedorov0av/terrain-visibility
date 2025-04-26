@@ -1,9 +1,10 @@
 import numpy as np
 from fastapi import APIRouter, Query
 
-from backend.utils.data_transform import transform_visible_area_as_polygon_geojson
-from backend.utils.visibility import get_visible_area
+from ..utils.data_transform import transform_visible_area_as_polygon_geojson
+from ..utils.visibility import get_visible_area
 from ..setup.config import MATRIX_FILE_PATH
+
 
 elevation_matrix = np.loadtxt(MATRIX_FILE_PATH, delimiter=',')
 
